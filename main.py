@@ -5,9 +5,13 @@ class to_ascii():
         self.img = Image.open(im).convert('L')
         self.px = self.img.load()
         self.width, self.height = self.img.size
+        self.ascii_values = ['@', '#', 'M', '&', 'R', '$', 'C', 'I', ';', ':', '*', '^', '"', '`', ' ']
     def convert(self):
         for x in range(self.width):
             for y in range(self.height):
-                print(self.px[x,y])
+                if self.px[x,y] < 17:
+                    print(self.ascii_values[0])
+                elif self.px[x,y] < 34:
+                    print(self.ascii_values[1])
 
 to_ascii("./idle.gif").convert()
