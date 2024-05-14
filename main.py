@@ -13,5 +13,9 @@ class to_ascii():
                     print(self.ascii_values[0])
                 elif self.px[x,y] < 34:
                     print(self.ascii_values[1])
+                elif self.px[x,y] < 51:
+                    print(self.ascii_values[2])
+                elif self.px[x,y] < 68:
+                    print(self.ascii_values[3])
 
 to_ascii("./idle.gif").convert()
