@@ -1,4 +1,5 @@
 from PIL import Image
+import sys
 
 class to_ascii():
     def __init__(self, im):
@@ -7,37 +8,42 @@ class to_ascii():
         self.width, self.height = self.img.size
         self.ascii_values = ['@', '#', 'M', '&', 'R', '$', 'C', 'I', ';', ':', '*', '^', '"', '`', ' ']
     def convert(self):
-        for x in range(self.width):
-            for y in range(self.height):
+        self.final = []
+        # there must be a better way to do this
+        for y in range(self.height):
+            for x in range(self.width):
                 if self.px[x,y] < 17:
-                    print(self.ascii_values[0])
+                    self.final.append(self.ascii_values[0])
                 elif self.px[x,y] < 34:
-                    print(self.ascii_values[1])
+                    self.final.append(self.ascii_values[1])
                 elif self.px[x,y] < 51:
-                    print(self.ascii_values[2])
+                    self.final.append(self.ascii_values[2])
                 elif self.px[x,y] < 68:
-                    print(self.ascii_values[3])
+                    self.final.append(self.ascii_values[3])
                 elif self.px[x,y] < 85:
-                    print(self.ascii_values[4])
+                    self.final.append(self.ascii_values[4])
                 elif self.px[x,y] < 102:
-                    print(self.ascii_values[5])
+                    self.final.append(self.ascii_values[5])
                 elif self.px[x,y] < 119:
-                    print(self.ascii_values[6])
+                    self.final.append(self.ascii_values[6])
                 elif self.px[x,y] < 136:
-                    print(self.ascii_values[7])
+                    self.final.append(self.ascii_values[7])
                 elif self.px[x,y] < 153:
-                    print(self.ascii_values[8])
+                    self.final.append(self.ascii_values[8])
                 elif self.px[x,y] < 170:
-                    print(self.ascii_values[9])
+                    self.final.append(self.ascii_values[9])
                 elif self.px[x,y] < 187:
-                    print(self.ascii_values[10])
+                    self.final.append(self.ascii_values[10])
                 elif self.px[x,y] < 204:
-                    print(self.ascii_values[11])
+                    self.final.append(self.ascii_values[11])
                 elif self.px[x,y] < 221:
-                    print(self.ascii_values[12])
+                    self.final.append(self.ascii_values[12])
                 elif self.px[x,y] < 238:
-                    print(self.ascii_values[13])
+                    self.final.append(self.ascii_values[13])
                 else:
-                    print(self.ascii_values[14])
+                    self.final.append(self.ascii_values[14])
+            self.final.append('\n')
+        return ''.join(self.final)
 
-to_ascii("./idle.gif").convert()
+
+print(to_ascii(sys.argv[1]).convert())
